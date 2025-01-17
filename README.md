@@ -215,3 +215,116 @@ sudo apt install htop       # Installs `htop` on Debian-based systems (if not in
 - **Viewing Processes**: Use `ps` for a snapshot and `top` or `htop` for real-time monitoring.
 - **Killing Processes**: Be cautious while using `kill` to avoid terminating critical system processes.
 - **Process Priority**: Use `nice` and `renice` to adjust process priorities instead of directly killing them when needed.
+- 
+
+# **System Information**
+
+
+---
+
+### **1. `uname`**  
+The `uname` command displays system information, such as the kernel name, version, and operating system details.
+
+#### **Common Options**:
+- `uname`: Displays the kernel name (e.g., Linux).
+- `uname -a`: Displays all available system information.
+  - **Output Includes**:
+    - Kernel name
+    - Hostname
+    - Kernel release and version
+    - Machine hardware name
+    - Operating system
+
+#### **Example**:
+```bash
+uname                      # Displays the kernel name.
+uname -a                   # Outputs detailed system information, such as:
+                           # Linux hostname 5.15.0-73-generic #80-Ubuntu SMP Tue Apr 11 18:49:16 UTC 2023 x86_64 GNU/Linux
+```
+
+---
+
+### **2. `df`**  
+The `df` command shows information about disk space usage for file systems. This is helpful for monitoring disk usage and checking available space.
+
+#### **Common Options**:
+- `df`: Displays disk usage in blocks.
+- `df -h`: Displays disk usage in a human-readable format (e.g., MB, GB).
+- `df -T`: Shows the type of each file system.
+
+#### **Example**:
+```bash
+df                        # Displays disk space usage in blocks.
+df -h                     # Shows disk usage in human-readable units (e.g., 20G/100G).
+df /home                  # Displays disk usage for the `/home` directory.
+```
+
+---
+
+### **3. `du`**  
+The `du` command estimates the disk space usage of files and directories.
+
+#### **Common Options**:
+- `du`: Displays disk usage for the current directory and its subdirectories.
+- `du -h`: Shows sizes in human-readable units.
+- `du -sh`: Summarizes total disk usage for a file or directory.
+- `du -c`: Outputs a grand total of disk usage.
+
+#### **Example**:
+```bash
+du folder                 # Displays disk usage for the `folder` directory.
+du -sh folder             # Shows a human-readable summary of the `folder` size.
+du -sh *                  # Summarizes sizes for all files and subdirectories in the current directory.
+```
+
+---
+
+### **4. `free`**  
+The `free` command displays information about memory usage, including total, used, and available memory.
+
+#### **Common Options**:
+- `free`: Displays memory usage in bytes.
+- `free -m`: Displays memory usage in megabytes.
+- `free -h`: Shows memory usage in a human-readable format.
+
+#### **Output Fields**:
+- **Total**: Total amount of memory.
+- **Used**: Memory currently in use.
+- **Free**: Unused memory.
+- **Shared**: Memory shared between processes.
+- **Buffers/Cache**: Memory used by buffers and cache.
+- **Available**: Memory available for new applications.
+
+#### **Example**:
+```bash
+free                      # Displays memory usage in bytes.
+free -m                   # Shows memory usage in megabytes.
+free -h                   # Outputs memory usage in a human-readable format.
+```
+
+---
+
+### **5. `uptime`**  
+The `uptime` command shows how long the system has been running, along with the current time, number of users, and load averages.
+
+#### **Output Format**:
+- **Current Time**: The current system time.
+- **Up Time**: How long the system has been running.
+- **Users**: Number of logged-in users.
+- **Load Averages**: System load over the past 1, 5, and 15 minutes.
+
+#### **Example**:
+```bash
+uptime                    # Example output:
+                           # 14:32:18 up 2 days, 5:47, 3 users, load average: 0.23, 0.15, 0.10
+```
+
+---
+
+### **Quick Summary of Use Cases**:
+- **`uname`**: Check system kernel and OS information.
+- **`df`**: Monitor file system and disk space usage.
+- **`du`**: Analyze disk usage for files and directories.
+- **`free`**: View memory usage and availability.
+- **`uptime`**: Determine how long the system has been running.
+
