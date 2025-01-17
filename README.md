@@ -119,3 +119,99 @@ mv -i file1 file2   # Prompts before overwriting file2 with file1.
 ### **Additional Notes**:
 - **File and Directory Permissions**: Ensure you have the necessary permissions when working with files or directories.
 - **Use with `sudo`**: For operations in system directories or files, you might need `sudo`.
+
+---
+
+
+# Managing Processes
+
+---
+
+### **1. `ps`**  
+The `ps` command is used to display information about active processes running on the system. It provides a snapshot of the current processes.
+
+#### **Common Options**:
+- `ps`: Displays processes of the current shell session.
+- `ps aux`: Shows all processes running on the system, along with detailed information.
+  - `a`: Displays processes of all users.
+  - `u`: Includes user and CPU/memory usage details.
+  - `x`: Includes processes not attached to a terminal.
+
+#### **Example**:
+```bash
+ps                          # Displays processes in the current session.
+ps aux                      # Shows all active processes with details like PID, user, and resource usage.
+ps -ef                      # Another common format for displaying process details.
+```
+
+---
+
+### **2. `top`**  
+The `top` command provides a real-time view of system resource usage, including CPU, memory, and process details. It is highly useful for monitoring system performance.
+
+#### **Key Sections in `top` Output**:
+- **Tasks**: Number of running, sleeping, or stopped processes.
+- **CPU Usage**: Displays the percentage of CPU being utilized.
+- **Memory Usage**: Displays physical and swap memory usage.
+- **Processes**: Lists active processes sorted by CPU usage.
+
+#### **Common Controls While Using `top`**:
+- **q**: Quit `top`.
+- **k**: Kill a process by entering its PID.
+- **r**: Renice (change priority) of a process by entering its PID and new priority.
+- **P**: Sort processes by CPU usage.
+- **M**: Sort processes by memory usage.
+
+#### **Example**:
+```bash
+top                         # Launches the `top` command to monitor resources in real-time.
+top -d 5                    # Updates the display every 5 seconds instead of the default 3 seconds.
+```
+
+---
+
+### **3. `kill`**  
+The `kill` command is used to terminate a process by its Process ID (PID). It sends a signal to the process, instructing it to stop.
+
+#### **Common Signals**:
+- `SIGTERM` (15): Politely asks the process to terminate (default signal).
+- `SIGKILL` (9): Forcibly kills the process if it doesn't respond to `SIGTERM`.
+- `SIGHUP` (1): Restarts a process.
+
+#### **Example**:
+```bash
+ps aux                      # Identify the PID of the process you want to terminate.
+kill 1234                   # Sends SIGTERM to terminate the process with PID 1234.
+kill -9 1234                # Sends SIGKILL to forcibly terminate the process.
+kill -HUP 5678              # Restarts the process with PID 5678.
+```
+
+---
+
+### **4. `htop`**  
+The `htop` command is an interactive process viewer similar to `top`, but with a more user-friendly and visually appealing interface. It is not installed by default on many distributions but can be installed with package managers.
+
+#### **Features of `htop`**:
+- Color-coded display for CPU, memory, and swap usage.
+- Allows scrolling through processes.
+- Provides easy-to-use shortcuts for managing processes.
+
+#### **Common Controls While Using `htop`**:
+- **F2**: Open the setup menu to customize the display.
+- **F3**: Search for a process.
+- **F5**: Display tree view of processes.
+- **F9**: Kill a process by selecting it.
+- **F10**: Quit `htop`.
+
+#### **Example**:
+```bash
+htop                        # Launches the `htop` interface.
+sudo apt install htop       # Installs `htop` on Debian-based systems (if not installed).
+```
+
+---
+
+### **Additional Notes**:
+- **Viewing Processes**: Use `ps` for a snapshot and `top` or `htop` for real-time monitoring.
+- **Killing Processes**: Be cautious while using `kill` to avoid terminating critical system processes.
+- **Process Priority**: Use `nice` and `renice` to adjust process priorities instead of directly killing them when needed.
