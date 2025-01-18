@@ -123,7 +123,119 @@ mv -i file1 file2   # Prompts before overwriting file2 with file1.
 ---
 
 
-# Managing Processes
+# **File Viewing and Editing**
+
+---
+
+### **1. `cat`**
+The `cat` command displays the contents of a file. It can also concatenate multiple files and show them together.
+
+#### **Common Options**:
+- `cat file.txt`: Displays the contents of the file.
+- `cat file1.txt file2.txt > merged.txt`: Combines file1 and file2 and saves the output to merged.txt.
+- `cat -n file.txt`: Numbers each line in the output.
+
+#### **Example**:
+```bash
+cat file.txt                  # Displays the entire content of file.txt.
+cat file1.txt file2.txt       # Outputs the content of file1.txt followed by file2.txt.
+cat -n file.txt               # Shows content with line numbers.
+```
+
+---
+
+### **2. `less`**
+The `less` command allows you to view file contents one page at a time. It's ideal for viewing large files.
+
+#### **Common Controls While Using `less`**:
+- **Space**: Scroll down one page.
+- **b**: Scroll up one page.
+- **q**: Quit `less`.
+
+#### **Example**:
+```bash
+less file.txt                 # Opens file.txt for paginated viewing.
+less /var/log/syslog          # Views large system log files one page at a time.
+```
+
+---
+
+### **3. `nano`**
+The `nano` command is a simple, user-friendly text editor for creating or modifying files.
+
+#### **Common Controls in `nano`**:
+- **Ctrl+O**: Save the file.
+- **Ctrl+X**: Exit the editor.
+- **Ctrl+K**: Cut a line.
+- **Ctrl+U**: Paste a line.
+
+#### **Example**:
+```bash
+nano file.txt                 # Opens file.txt for editing in the Nano text editor.
+nano newfile.txt              # Creates and opens a new file named newfile.txt.
+```
+
+---
+
+### **4. `vim`**
+The `vim` command is a powerful and advanced text editor with extensive functionality.
+
+#### **Basic Modes**:
+- **Normal Mode**: Default mode for navigation and commands.
+- **Insert Mode**: Enter text by pressing `i`.
+- **Command Mode**: Save, quit, or execute commands by pressing `:`.
+
+#### **Common Commands in `vim`**:
+- `:w`: Save the file.
+- `:q`: Quit vim.
+- `:wq`: Save and quit.
+- `:q!`: Quit without saving.
+
+#### **Example**:
+```bash
+vim file.txt                 # Opens file.txt for editing in Vim.
+vim newfile.txt              # Creates and opens a new file named newfile.txt in Vim.
+```
+
+---
+
+### **5. `head`**
+The `head` command shows the first few lines of a file. By default, it shows the first 10 lines.
+
+#### **Common Options**:
+- `head -n <number> file.txt`: Specify the number of lines to display.
+
+#### **Example**:
+```bash
+head file.txt                # Displays the first 10 lines of file.txt.
+head -n 5 file.txt           # Displays the first 5 lines of file.txt.
+```
+
+---
+
+### **6. `tail`**
+The `tail` command shows the last few lines of a file. By default, it displays the last 10 lines.
+
+#### **Common Options**:
+- `tail -n <number> file.txt`: Specify the number of lines to display.
+- `tail -f file.txt`: Continuously display the last lines of a file, often used to monitor logs.
+
+#### **Example**:
+```bash
+tail file.txt                # Displays the last 10 lines of file.txt.
+tail -n 5 file.txt           # Displays the last 5 lines of file.txt.
+tail -f /var/log/syslog      # Continuously monitors and displays new entries in the syslog file.
+```
+
+---
+
+### **Additional Notes**:
+- **Viewing Large Files**: Use `less` or `tail -f` for large files or logs to avoid cluttering the terminal.
+- **Editing Tools**: While `nano` is beginner-friendly, `vim` offers advanced features for efficient editing.
+- **Permissions**: Ensure you have the correct permissions to view or edit a file.
+
+
+# **Managing Processes**
 
 ---
 
