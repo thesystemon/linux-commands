@@ -439,4 +439,105 @@ uptime                    # Example output:
 - **`du`**: Analyze disk usage for files and directories.
 - **`free`**: View memory usage and availability.
 - **`uptime`**: Determine how long the system has been running.
+- 
+
+
+
+# **User and Permission Management**
+
+These commands are essential for managing users, groups, file permissions, and access control in Linux.
+
+---
+
+### **1. `whoami`**  
+The `whoami` command shows the username of the currently logged-in user. It's a quick way to verify your current user identity.
+
+#### **Example**:
+```bash
+whoami                     # Output: comrade
+```
+
+---
+
+### **2. `id`**  
+The `id` command displays detailed information about the current or specified user's ID, group memberships, and privileges.
+
+#### **Output Information**:
+- **UID**: User ID.
+- **GID**: Group ID.
+- **Groups**: All groups the user belongs to.
+
+#### **Example**:
+```bash
+id                         # Displays the UID, GID, and group memberships of the current user.
+id comrade                 # Displays the same information for the user "comrade".
+```
+
+---
+
+### **3. `chmod`**  
+The `chmod` command modifies file or directory permissions. Permissions are specified using numeric or symbolic modes.
+
+#### **Permission Modes**:
+- **Read (r)**: Value `4`
+- **Write (w)**: Value `2`
+- **Execute (x)**: Value `1`
+
+#### **Numeric Syntax**:
+- **`chmod 755 file.sh`**:  
+  - Owner: Full permissions (7 = 4+2+1).
+  - Group: Read and execute (5 = 4+1).
+  - Others: Read and execute (5 = 4+1).
+
+#### **Symbolic Syntax**:
+- `chmod u+x file.sh`: Adds execute permission for the owner.
+- `chmod g-w file.sh`: Removes write permission for the group.
+
+#### **Example**:
+```bash
+chmod 755 file.sh          # Sets read, write, and execute for owner; read and execute for group and others.
+chmod u+x file.sh          # Adds execute permission for the file owner.
+chmod g-w file.sh          # Removes write permission from the group.
+```
+
+---
+
+### **4. `chown`**  
+The `chown` command changes the ownership of files or directories, specifying the user, group, or both.
+
+#### **Syntax**:
+- `chown [user]:[group] file`
+- If only a user is specified, the group remains unchanged.
+
+#### **Example**:
+```bash
+chown comrade:developer file.txt  # Changes ownership to user "comrade" and group "developer".
+chown comrade file.txt            # Changes ownership to user "comrade"; group remains unchanged.
+chown :developer file.txt         # Changes group to "developer"; owner remains unchanged.
+```
+
+---
+
+### **5. `passwd`**  
+The `passwd` command changes the password for a user. It can be used by the user themselves or by an administrator to update another user’s password.
+
+#### **Syntax**:
+- `passwd`: Changes the current user's password.
+- `passwd username`: Changes the password for the specified user (requires superuser privileges).
+
+#### **Example**:
+```bash
+passwd                     # Prompts to change the password for the current user.
+sudo passwd shyam          # Changes the password for the user "shyam" (admin access required).
+```
+
+---
+
+### **Summary of Use Cases**:
+- **`whoami`**: Quickly check your current user identity.
+- **`id`**: View detailed user and group information.
+- **`chmod`**: Adjust file permissions using numeric or symbolic modes.
+- **`chown`**: Change ownership of files or directories.
+- **`passwd`**: Update user passwords.
+
 
